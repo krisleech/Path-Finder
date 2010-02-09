@@ -1,13 +1,37 @@
 PathFinder
 ==========
 
-Introduction goes here.
+A Rails plugin which extends ActiveRecord using the decorator pattern to allow self-referential models (eg. acts_as_tree) to maintain a textual path representing itself and its ancestors.
+
+This is useful, for example, in association with catch-all routes to allow you to find a record using the URL:
+
+Hierarchy -> Generated Path
+
+Categories -> /categories
+	Books -> /categories/books
+		Hardback -> /categories/books/hardback
+		Paperback -> /categories/books/paperback
+	Websites => /categories/websites
+	
+Example URL: http://mywebsite.co.uk/categories/books/hardback
+	
+_category_controller.rb__
+	
+def show
+	@category = Category.find_by_path(request.path)
+end
+
+_category.rb_
+
+class Category < ActiveRecord::Base
+  acts_as_tree
+  path_finder :column => 'path', :uid => 'to_param', :deliminator => '/'
+end
+
+Notes
+=====
+
+The model must respond_to 'children'
 
 
-Example
-=======
-
-Example goes here.
-
-
-Copyright (c) 2010 [name of plugin creator], released under the MIT license
+Copyright (c) 2010 Kris Leech, released under the MIT license
