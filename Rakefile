@@ -21,3 +21,18 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "path_finder"
+    gemspec.summary = "Textual path for self-referential models"
+    gemspec.description = "Textual path for self-referential models"
+    gemspec.email = "kris.leech@interkonect.com"
+    gemspec.homepage = "http://interkonect.com"
+    gemspec.authors = ["Kris Leech"]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
+end
+

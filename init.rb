@@ -1,1 +1,1 @@
-require 'path_finder'
+require File.dirname(__FILE__) + "/rails/init"
