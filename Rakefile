@@ -29,7 +29,7 @@ begin
     gemspec.summary = "Textual path for self-referential models"
     gemspec.description = "Textual path for self-referential models"
     gemspec.email = "kris.leech@interkonect.com"
-    gemspec.homepage = "http://interkonect.com"
+    gemspec.homepage = "http://github.com/krisleech/Path-Finder"
     gemspec.authors = ["Kris Leech"]
   end
 rescue LoadError

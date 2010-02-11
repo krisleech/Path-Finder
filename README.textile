@@ -1,9 +1,14 @@
 h2. PathFinder
 
-
 A Rails plugin which extends ActiveRecord using the decorator pattern to allow self-referential models (eg. acts_as_tree) to maintain a textual path representing itself and its ancestors.
 
-This is useful, for example, in association with catch-all routes to allow you to find a record using the URL:
+h3. Install
+
+gem install path_finder
+
+h3. Example
+
+In association with a catch-all route you can find a record using the URL:
 
 Hierarchy -> Generated Path
 
@@ -26,9 +31,13 @@ _category.rb_
 class Category < ActiveRecord::Base
   acts_as_tree
   path_finder :column => 'path', :uid => 'to_param', :deliminator => '/'
+
+	def to_param
+		permalink
+	end
 end
 
-h2. Notes
+h3. Notes
 
 The model must respond_to 'children'
 
